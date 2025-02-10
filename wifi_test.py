@@ -1,15 +1,18 @@
 # Small test to Wifi Enable Test
 #
-# To use these snippets within Mobly tests, load it on your AndroidDevice objects 
+# To use these snippets within Mobly tests, load it on your AndroidDevice objects
 # after registering android_device module:
 #
 # Test carried out
 # ================
-# (pye3_11_4) PS L:\Learning\PythonProjects\mobly\tools> 
+# (pye3_11_4) PS L:\Learning\PythonProjects\mobly\tools>
 #   python snippet_shell.py com.google.android.mobly.snippet.bundled -s 36081FDH2004VY
 #   python snippet_shell.py com.google.android.mobly.snippet.bundled -s 3A131JEHN06720
 #
-#(pye3_11_4) PS L:\Learning\PythonProjects\MoblyTest> python .\wifi_test.py -c .\pixel7_config.yml --test_case test_start test_wifi test_end
+# (pye3_11_4) PS L:\Learning\PythonProjects\MoblyTest>
+#   python .\hello_world_test.py -c .\sample_config.yml
+#   python .\wifi_test.py -c .\pixel7_config.yml --test_case test_start test_wifi test_end
+#
 #[SampleTestBed] 02-10 21:46:34.744 INFO ==========> WifiEnabledTest <==========
 #[SampleTestBed] 02-10 21:46:37.873 INFO [AndroidDevice|36081FDH2004VY] Initializing the snippet package com.google.android.mobly.snippet.bundled.
 #[SampleTestBed] 02-10 21:46:41.172 INFO [AndroidDevice|3A131JEHN06720] Initializing the snippet package com.google.android.mobly.snippet.bundled.2
@@ -48,7 +51,7 @@ from mobly import test_runner
 from mobly.controllers import android_device
 
 class WifiEnabledTest(base_test.BaseTestClass):
-  
+
   def setup_class(self):
     import traceback
     import logging
@@ -61,17 +64,17 @@ class WifiEnabledTest(base_test.BaseTestClass):
 
     except Exception as e:
         logging.error(traceback.format_exc())
-        # Logs the error appropriately. 
+        # Logs the error appropriately.
         print (e)
-       
+
     self.dut = []
     for i in range (len(self.ads)):
-        self.dut.append(self.ads[i])            
+        self.dut.append(self.ads[i])
         # Start Mobly Bundled Snippets (MBS).
-        self.dut[i].load_snippet('mbs', 'com.google.android.mobly.snippet.bundled')    
+        self.dut[i].load_snippet('mbs', 'com.google.android.mobly.snippet.bundled')
     else:
        print(len(self.ads))
-  
+
   def test_start(self):
     for dut in self.dut:
         dut.mbs.makeToast('Start Wifi Enabled Test!')
@@ -87,10 +90,10 @@ class WifiEnabledTest(base_test.BaseTestClass):
         print(f"s: {s}\n")
         ApRes = s.wifiIsApEnabled()
         print(f"s.wifiIsApEnabled(): {ApRes}")
-        WifiRef = s.isWifiConnected()
-        print(f"s.isWifiConnected(): {WifiRef}")
+        WifiRes = s.isWifiConnected()
+        print(f"s.isWifiConnected(): {WifiRes}")
     else:
-       print("test_wifi COMPLETED")
+        print("test_wifi COMPLETED")
 
 if __name__ == '__main__':
     test_runner.main()
