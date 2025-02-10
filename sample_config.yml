@@ -1,0 +1,9 @@
+#
+# Ref: available at https://jeffhermanmobly.readthedocs.io/en/latest/tutorial.html
+#   accessed 10/02/2025
+#
+TestBeds:
+  # A test bed where adb will find Android devices.
+  - Name: SampleTestBed
+    Controllers:
+        AndroidDevice: '*'

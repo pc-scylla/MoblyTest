@@ -1,0 +1,15 @@
+#
+# Ref: available at https://jeffhermanmobly.readthedocs.io/en/latest/tutorial.html
+#   accessed 10/02/2025
+#
+TestBeds:
+  # A test bed where adb will find Android devices.
+  - Name: SampleTestBed
+    Controllers:
+        AndroidDevice:
+          - serial: 36081FDH2004VY
+            phone_number: +44 7969 295 302
+            label: pixel7_bc
+          - serial: 3A131JEHN06720
+            label: pixel7a_qc
+            phone_number: +33 1234 1244
